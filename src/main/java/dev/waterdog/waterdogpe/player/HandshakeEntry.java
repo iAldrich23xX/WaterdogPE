@@ -47,6 +47,9 @@ public class HandshakeEntry {
         // The purpose is to change player's client data or set encryption keypair before joining first downstream.
         PreClientDataSetEvent event = new PreClientDataSetEvent(this.clientData, this.extraData, EncryptionUtils.createKeyPair(), session);
         proxy.getEventManager().callEvent(event);
+        
+        System.out.println(this.clientData);
+        System.out.println(this.extraData);
 
         LoginData.LoginDataBuilder builder = LoginData.builder();
         builder.displayName(this.extraData.get("displayName").getAsString());
